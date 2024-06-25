@@ -63,7 +63,7 @@
         </dependency>
         <dependency>
             <groupId>com.ske</groupId>
-            <artifactId>ske-electricsystem</artifactId>
+            <artifactId>ske-four</artifactId>
         </dependency>
     </dependencies>
 

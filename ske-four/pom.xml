@@ -9,7 +9,7 @@
         <version>3.8.7</version>
     </parent>
 
-    <artifactId>ske-electricsystem</artifactId>
+    <artifactId>ske-four</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

@@ -139,7 +139,7 @@
 
             <dependency>
                 <groupId>com.ske</groupId>
-                <artifactId>ske-electricsystem</artifactId>
+                <artifactId>ske-four</artifactId>
                 <version>${ske.version}</version>
             </dependency>
 
@@ -188,7 +188,7 @@
         <module>ske-quartz</module>
         <module>ske-generator</module>
         <module>ske-common</module>
-        <module>ske-electricsystem</module>
+        <module>ske-four</module>
     </modules>
     <packaging>pom</packaging>
 

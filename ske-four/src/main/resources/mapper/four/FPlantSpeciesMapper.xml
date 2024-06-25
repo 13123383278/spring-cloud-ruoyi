@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ske.study.mapper.FPlantSpeciesMapper">
+    
+    <resultMap type="FPlantSpecies" id="FPlantSpeciesResult">
+        <result property="id"    column="id"    />
+        <result property="commonName"    column="common_name"    />
+        <result property="scientificName"    column="scientific_name"    />
+        <result property="family"    column="family"    />
+        <result property="genus"    column="genus"    />
+        <result property="habitat"    column="habitat"    />
+        <result property="growthHabit"    column="growth_habit"    />
+        <result property="floweringSeason"    column="flowering_season"    />
+        <result property="fruitOrSeedDescription"    column="fruit_or_seed_description"    />
+        <result property="isEndangered"    column="is_endangered"    />
+        <result property="conservationStatus"    column="conservation_status"    />
+        <result property="description"    column="description"    />
+        <result property="createdAt"    column="created_at"    />
+        <result property="updatedAt"    column="updated_at"    />
+    </resultMap>
+
+    <sql id="selectFPlantSpeciesVo">
+        select id, common_name, scientific_name, family, genus, habitat, growth_habit, flowering_season, fruit_or_seed_description, is_endangered, conservation_status, description, created_at, updated_at from f_plant_species
+    </sql>
+
+    <select id="selectFPlantSpeciesList" parameterType="FPlantSpecies" resultMap="FPlantSpeciesResult">
+        <include refid="selectFPlantSpeciesVo"/>
+        <where>  
+            <if test="commonName != null  and commonName != ''"> and common_name like concat('%', #{commonName}, '%')</if>
+            <if test="scientificName != null  and scientificName != ''"> and scientific_name like concat('%', #{scientificName}, '%')</if>
+            <if test="family != null  and family != ''"> and family like concat('%', #{family}, '%')</if>
+            <if test="genus != null  and genus != ''"> and genus like concat('%', #{genus}, '%')</if>
+            <if test="habitat != null  and habitat != ''"> and habitat like concat('%', #{habitat}, '%')</if>
+            <if test="growthHabit != null  and growthHabit != ''"> and growth_habit like concat('%', #{growthHabit}, '%')</if>
+            <if test="floweringSeason != null  and floweringSeason != ''"> and flowering_season = #{floweringSeason}</if>
+            <if test="fruitOrSeedDescription != null  and fruitOrSeedDescription != ''"> and fruit_or_seed_description like concat('%', #{fruitOrSeedDescription}, '%')</if>
+            <if test="isEndangered != null  and isEndangered != ''"> and is_endangered = #{isEndangered}</if>
+            <if test="conservationStatus != null  and conservationStatus != ''"> and conservation_status = #{conservationStatus}</if>
+            <if test="description != null  and description != ''"> and description like concat('%', #{description}, '%')</if>
+            <if test="createdAt != null "> and created_at = #{createdAt}</if>
+            <if test="updatedAt != null "> and updated_at = #{updatedAt}</if>
+        </where>
+    </select>
+    
+    <select id="selectFPlantSpeciesById" parameterType="Long" resultMap="FPlantSpeciesResult">
+        <include refid="selectFPlantSpeciesVo"/>
+        where id = CAST(#{id} AS INTEGER)
+    </select>
+
+    <insert id="insertFPlantSpecies" parameterType="FPlantSpecies" useGeneratedKeys="true" keyProperty="id">
+        insert into f_plant_species
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="commonName != null">common_name,</if>
+            <if test="scientificName != null">scientific_name,</if>
+            <if test="family != null">family,</if>
+            <if test="genus != null">genus,</if>
+            <if test="habitat != null">habitat,</if>
+            <if test="growthHabit != null">growth_habit,</if>
+            <if test="floweringSeason != null">flowering_season,</if>
+            <if test="fruitOrSeedDescription != null">fruit_or_seed_description,</if>
+            <if test="isEndangered != null">is_endangered,</if>
+            <if test="conservationStatus != null">conservation_status,</if>
+            <if test="description != null">description,</if>
+            <if test="createdAt != null">created_at,</if>
+            <if test="updatedAt != null">updated_at,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="commonName != null">#{commonName},</if>
+            <if test="scientificName != null">#{scientificName},</if>
+            <if test="family != null">#{family},</if>
+            <if test="genus != null">#{genus},</if>
+            <if test="habitat != null">#{habitat},</if>
+            <if test="growthHabit != null">#{growthHabit},</if>
+            <if test="floweringSeason != null">#{floweringSeason},</if>
+            <if test="fruitOrSeedDescription != null">#{fruitOrSeedDescription},</if>
+            <if test="isEndangered != null">#{isEndangered},</if>
+            <if test="conservationStatus != null">#{conservationStatus},</if>
+            <if test="description != null">#{description},</if>
+            <if test="createdAt != null">#{createdAt},</if>
+            <if test="updatedAt != null">#{updatedAt},</if>
+         </trim>
+    </insert>
+
+    <update id="updateFPlantSpecies" parameterType="FPlantSpecies">
+        update f_plant_species
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="commonName != null">common_name = #{commonName},</if>
+            <if test="scientificName != null">scientific_name = #{scientificName},</if>
+            <if test="family != null">family = #{family},</if>
+            <if test="genus != null">genus = #{genus},</if>
+            <if test="habitat != null">habitat = #{habitat},</if>
+            <if test="growthHabit != null">growth_habit = #{growthHabit},</if>
+            <if test="floweringSeason != null">flowering_season = #{floweringSeason},</if>
+            <if test="fruitOrSeedDescription != null">fruit_or_seed_description = #{fruitOrSeedDescription},</if>
+            <if test="isEndangered != null">is_endangered = #{isEndangered},</if>
+            <if test="conservationStatus != null">conservation_status = #{conservationStatus},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="createdAt != null">created_at = #{createdAt},</if>
+            <if test="updatedAt != null">updated_at = #{updatedAt},</if>
+        </trim>
+        where id = CAST(#{id} AS INTEGER)
+    </update>
+
+    <delete id="deleteFPlantSpeciesById" parameterType="Long">
+        delete from f_plant_species where id = CAST(#{id} AS INTEGER)
+    </delete>
+
+    <delete id="deleteFPlantSpeciesByIds" parameterType="String">
+        delete from f_plant_species where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            CAST(#{id} AS INTEGER)
+        </foreach>
+    </delete>
+</mapper>
