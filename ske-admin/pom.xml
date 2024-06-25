@@ -37,11 +37,11 @@
             <version>1.6.2</version>
         </dependency>
 
-        <!-- PGsql驱动包 -->
+        <!-- mysql驱动包 -->
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.2.18</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
         </dependency>
 
         <!-- 核心模块-->

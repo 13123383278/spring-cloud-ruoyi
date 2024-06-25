@@ -2,12 +2,13 @@
 spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        driver-class-name: org.postgresql.Driver
+        driver-class-name: com.mysql.cj.jdbc.Driver
         druid:
             # 主库数据源
             master:
-                url: jdbc:postgresql://localhost:5432/ske-electric?useUnicode=true&characterEncoding=utf8
-                username: postgres
+                # MySQL在高版本需要指明是否进行SSL连接 解决则加上 &useSSL=false
+                url: jdbc:mysql://47.121.136.238:3306/four?characterEncoding=utf-8&useSSL=false
+                username: root
                 password: root
             # 从库数据源
             slave:

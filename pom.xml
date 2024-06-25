@@ -139,12 +139,6 @@
 
             <dependency>
                 <groupId>com.ske</groupId>
-                <artifactId>ske-old-electricsystem</artifactId>
-                <version>${ske.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.ske</groupId>
                 <artifactId>ske-electricsystem</artifactId>
                 <version>${ske.version}</version>
             </dependency>
@@ -195,7 +189,6 @@
         <module>ske-generator</module>
         <module>ske-common</module>
         <module>ske-electricsystem</module>
-        <module>ske-old-electricsystem</module>
     </modules>
     <packaging>pom</packaging>
 
