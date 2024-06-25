@@ -1,0 +1,3 @@
+-- 1、首先需要创建 four 数据库，才能执行four.sql
+-- 2、字符集：utf8/utf8mb3（utf8的别名）
+-- 3、排序规则：utf8_general_ci
