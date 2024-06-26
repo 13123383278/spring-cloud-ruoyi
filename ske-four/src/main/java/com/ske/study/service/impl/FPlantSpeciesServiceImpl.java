@@ -1,11 +1,14 @@
 package com.ske.study.service.impl;
 
 import java.util.List;
+
+import com.ske.study.domain.FAnimalSpecies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ske.study.mapper.FPlantSpeciesMapper;
 import com.ske.study.domain.FPlantSpecies;
 import com.ske.study.service.IFPlantSpeciesService;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 植物种类基础Service业务层处理
@@ -17,7 +20,7 @@ import com.ske.study.service.IFPlantSpeciesService;
 public class FPlantSpeciesServiceImpl implements IFPlantSpeciesService 
 {
     @Autowired
-    private FPlantSpeciesMapper fPlantSpeciesMapper;
+    private FPlantSpeciesMapper mapper;
 
     /**
      * 查询植物种类基础
@@ -28,7 +31,7 @@ public class FPlantSpeciesServiceImpl implements IFPlantSpeciesService
     @Override
     public FPlantSpecies selectFPlantSpeciesById(Long id)
     {
-        return fPlantSpeciesMapper.selectFPlantSpeciesById(id);
+        return mapper.selectFPlantSpeciesById(id);
     }
 
     /**
@@ -40,7 +43,7 @@ public class FPlantSpeciesServiceImpl implements IFPlantSpeciesService
     @Override
     public List<FPlantSpecies> selectFPlantSpeciesList(FPlantSpecies fPlantSpecies)
     {
-        return fPlantSpeciesMapper.selectFPlantSpeciesList(fPlantSpecies);
+        return mapper.selectFPlantSpeciesList(fPlantSpecies);
     }
 
     /**
@@ -52,7 +55,7 @@ public class FPlantSpeciesServiceImpl implements IFPlantSpeciesService
     @Override
     public int insertFPlantSpecies(FPlantSpecies fPlantSpecies)
     {
-        return fPlantSpeciesMapper.insertFPlantSpecies(fPlantSpecies);
+        return mapper.insertFPlantSpecies(fPlantSpecies);
     }
 
     /**
@@ -64,7 +67,7 @@ public class FPlantSpeciesServiceImpl implements IFPlantSpeciesService
     @Override
     public int updateFPlantSpecies(FPlantSpecies fPlantSpecies)
     {
-        return fPlantSpeciesMapper.updateFPlantSpecies(fPlantSpecies);
+        return mapper.updateFPlantSpecies(fPlantSpecies);
     }
 
     /**
@@ -76,7 +79,7 @@ public class FPlantSpeciesServiceImpl implements IFPlantSpeciesService
     @Override
     public int deleteFPlantSpeciesByIds(Long[] ids)
     {
-        return fPlantSpeciesMapper.deleteFPlantSpeciesByIds(ids);
+        return mapper.deleteFPlantSpeciesByIds(ids);
     }
 
     /**
@@ -88,6 +91,35 @@ public class FPlantSpeciesServiceImpl implements IFPlantSpeciesService
     @Override
     public int deleteFPlantSpeciesById(Long id)
     {
-        return fPlantSpeciesMapper.deleteFPlantSpeciesById(id);
+        return mapper.deleteFPlantSpeciesById(id);
     }
+
+
+    /**
+     * 事务测试方法：根据对象的id删除数据
+     * @param fPlantSpecies
+     * @return
+     */
+    public int deleteOfTransaction(FPlantSpecies fPlantSpecies){
+        return mapper.deleteFPlantSpeciesById(fPlantSpecies.getId());
+    }
+
+    /**
+     * 事务测试方法：插入对象
+     * @param fPlantSpecies
+     * @return
+     */
+    public int insertOfTransaction(FPlantSpecies fPlantSpecies) throws InterruptedException {
+        return mapper.insertFPlantSpecies(fPlantSpecies);
+    }
+
+    @Transactional
+    public void deleteFPlantSpeciesByIdByTransaction(Long id) {
+        System.out.println("=================================" );
+        System.out.println("=================================" );
+        mapper.deleteFPlantSpeciesById(id);
+        System.out.println("=================================" );
+        System.out.println("=================================" );
+    }
+
 }

@@ -2,6 +2,7 @@ package com.ske.study.service;
 
 import java.util.List;
 import com.ske.study.domain.FPlantSpecies;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 植物种类基础Service接口
@@ -58,4 +59,22 @@ public interface IFPlantSpeciesService
      * @return 结果
      */
     public int deleteFPlantSpeciesById(Long id);
+
+    /**
+     * 事务测试方法：根据对象的id删除数据
+     * @param fPlantSpecies
+     * @return
+     */
+    public int deleteOfTransaction(FPlantSpecies fPlantSpecies);
+
+    /**
+     * 事务测试方法：插入对象
+     * @param fPlantSpecies
+     * @return
+     */
+    public int insertOfTransaction(FPlantSpecies fPlantSpecies) throws InterruptedException;
+
+
+    @Transactional
+    public void deleteFPlantSpeciesByIdByTransaction(Long id);
 }

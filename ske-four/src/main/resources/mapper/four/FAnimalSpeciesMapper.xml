@@ -42,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="selectFAnimalSpeciesById" parameterType="Long" resultMap="FAnimalSpeciesResult">
         <include refid="selectFAnimalSpeciesVo"/>
-        where id = CAST(#{id} AS INTEGER)
+        where id = #{id}
     </select>
 
     <insert id="insertFAnimalSpecies" parameterType="FAnimalSpecies" useGeneratedKeys="true" keyProperty="id">
@@ -94,7 +94,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
 
     <delete id="deleteFAnimalSpeciesById" parameterType="Long">
-        delete from f_animal_species where id = CAST(#{id} AS INTEGER)
+        delete from f_animal_species where id = #{id}
     </delete>
 
     <delete id="deleteFAnimalSpeciesByIds" parameterType="String">

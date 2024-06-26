@@ -104,7 +104,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
 
     <delete id="deleteFPlantSpeciesById" parameterType="Long">
-        delete from f_plant_species where id = CAST(#{id} AS INTEGER)
+        delete from f_plant_species where id = #{id}
     </delete>
 
     <delete id="deleteFPlantSpeciesByIds" parameterType="String">

@@ -8,6 +8,7 @@ import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import com.ske.common.constant.ScheduleConstants;
 import com.ske.common.exception.job.TaskException;
@@ -135,7 +136,7 @@ public class SysJobServiceImpl implements ISysJobService
      * @return 结果
      */
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(propagation = Propagation.MANDATORY)
     public void deleteJobByIds(Long[] jobIds) throws SchedulerException
     {
         for (Long jobId : jobIds)

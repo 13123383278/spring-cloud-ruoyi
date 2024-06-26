@@ -1,6 +1,8 @@
 package com.ske.study.mapper;
 
 import java.util.List;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ske.study.domain.FAnimalSpecies;
 
 /**
@@ -9,7 +11,7 @@ import com.ske.study.domain.FAnimalSpecies;
  * @author four
  * @date 2024-06-25
  */
-public interface FAnimalSpeciesMapper 
+public interface FAnimalSpeciesMapper extends BaseMapper<FAnimalSpecies>
 {
     /**
      * 查询动物种类基础
